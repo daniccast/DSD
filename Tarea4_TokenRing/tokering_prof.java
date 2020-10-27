@@ -34,8 +34,8 @@ class tokenring{
             System.exit(1);
         }
 
-        nodo= Integer.valueOf(args[0]); //Nodo actual
-        ip= args[1]; //IP del siguiente nodo
+        nodo= Integer.valueOf(args[0]);
+        ip= args[1];
         //System.out.println("Here" + ip);
         //Algoritmo 2
         Worker w = new Worker();
@@ -58,30 +58,17 @@ class tokenring{
             if(nodo == 0){
                 if(primera_vez){
                     primera_vez= false;
-                    salida.writeLong(token);
                     //System.out.println("Here");
                 } else{
                     token= entrada.readLong();
-                    token+=1;
-                    System.out.println("Salida: "+ token);          
-                    salida.writeLong(token);
-                }
-
             }  else{
                 token= entrada.readLong();
                 token+=1;
                 System.out.println("Salida: "+ token);
                 salida.writeLong(token);
             }
-
-            if(token==8){
-                break;
-            } 
         }
 
     }
-
-    salida.close();
-    entrada.close();
-    conexion.close();
+    
 }
