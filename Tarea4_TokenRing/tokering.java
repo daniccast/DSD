@@ -62,6 +62,10 @@ class tokenring{
                     //System.out.println("Here");
                 } else{
                     token= entrada.readLong();
+                    if(token==8){
+                        salida.writeLong(token);
+                        break;
+                    } 
                     token+=1;
                     System.out.println("Salida: "+ token);          
                     salida.writeLong(token);
@@ -69,14 +73,15 @@ class tokenring{
 
             }  else{
                 token= entrada.readLong();
+                if(token==8){
+                    salida.writeLong(token);
+                    break;
+                } 
                 token+=1;
                 System.out.println("Salida: "+ token);
                 salida.writeLong(token);
             }
-
-            if(token==8){
-                break;
-            } 
+ 
         }
 
     }
