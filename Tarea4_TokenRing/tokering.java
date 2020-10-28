@@ -59,7 +59,7 @@ class tokenring{
                 if(primera_vez){
                     primera_vez= false;
                     salida.writeLong(token);
-                    //System.out.println("Here");
+                    System.out.println("Salida: " + token);
                 } else{
                     token= entrada.readLong();
                     if(token==8){
