@@ -6,7 +6,7 @@ import java.lang.Thread;
 import java.nio.ByteBuffer;
 
 
-class tokenring{
+class tokenring_prof{
     static DataInputStream entrada;
     static DataOutputStream salida;
     static boolean primera_vez= true;
