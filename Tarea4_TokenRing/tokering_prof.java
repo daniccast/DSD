@@ -61,6 +61,7 @@ class tokenring{
                     //System.out.println("Here");
                 } else{
                     token= entrada.readLong();
+                }
             }  else{
                 token= entrada.readLong();
                 token+=1;
