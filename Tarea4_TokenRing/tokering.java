@@ -84,9 +84,10 @@ class tokenring{
  
         }
 
+        salida.close();
+        entrada.close();
+        conexion.close();
     }
 
-    salida.close();
-    entrada.close();
-    conexion.close();
-}
+    }
+
