@@ -62,7 +62,7 @@ class tokenring{
                     System.out.println("Salida: " + token);
                 } else{
                     token= entrada.readLong();
-                    if(token==8){
+                    if(token==4){
                         salida.writeLong(token);
                         break;
                     } 
@@ -73,7 +73,7 @@ class tokenring{
 
             }  else{
                 token= entrada.readLong();
-                if(token==8){
+                if(token==4){
                     salida.writeLong(token);
                     break;
                 } 
