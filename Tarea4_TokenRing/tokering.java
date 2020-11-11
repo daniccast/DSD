@@ -6,7 +6,7 @@ import java.lang.Thread;
 import java.nio.ByteBuffer;
 
 
-class Token_r{
+class tokering{
     static DataInputStream entrada;
     static DataOutputStream salida;
     static boolean primera_vez= true;
