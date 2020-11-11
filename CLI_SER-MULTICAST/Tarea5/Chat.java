@@ -61,7 +61,7 @@ class Chat{
         b = new BufferedReader(new InputStreamReader(System.in));
         mensaje.write(name);
         mensaje.write(b);
-        envia_mensaje(mensaje.toByteArray();,"230.0.0.0",50000);
+        envia_mensaje(mensaje.toByteArray(),"230.0.0.0",50000);
 
         mensaje.reset();
     }
