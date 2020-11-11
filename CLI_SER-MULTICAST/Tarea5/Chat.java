@@ -6,6 +6,8 @@ import java.nio.ByteBuffer;
 import java.net.DatagramSocket;
 import java.lang.Thread;
 import java.io.ByteArrayOutputStream;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 class Chat{
 
@@ -33,16 +35,21 @@ class Chat{
   }
 
   static class Worker extends Thread{
-    public void run(){
+    public void run() {
      // En un ciclo infinito se recibirán los mensajes enviados al grupo 
      // 230.0.0.0 a través del puerto 50000 y se desplegarán en la pantalla.
-    InetAddress grupo = InetAddress.getByName("230.0.0.0");
-    MulticastSocket socket = new MulticastSocket(50000);
-    socket.joinGroup(grupo); //Unir el socket al grupo
-    while(true){
-        byte[] a = recibe_mensaje(socket,4);
-        System.out.println(new String(a,"UTF-8"));
-     }
+    try {
+        InetAddress grupo = InetAddress.getByName("230.0.0.0");
+        MulticastSocket socket = new MulticastSocket(50000);
+        socket.joinGroup(grupo); //Unir el socket al grupo
+        while(true){
+            byte[] a = recibe_mensaje(socket,4);
+            System.out.println(new String(a,"UTF-8"));
+         }
+    } catch (Exception e) {
+       System.out.println(e);
+    }
+   
     }
   }
 
@@ -52,7 +59,7 @@ class Chat{
 
     String nombre = args[0] + ":"; //NOmbre de quien usa el programa.
     byte [] name= nombre.getBytes();
-    BufferedReader b = null;
+    BufferedReader b;
     ByteArrayOutputStream mensaje = new ByteArrayOutputStream();
     // En un ciclo infinito se leerá los mensajes del teclado y se enviarán
     // al grupo 230.0.0.0 a través del puerto 50000.
@@ -60,7 +67,7 @@ class Chat{
 
         b = new BufferedReader(new InputStreamReader(System.in));
         mensaje.write(name);
-        mensaje.write(b);
+        mensaje.write(b.toString().getBytes());
         envia_mensaje(mensaje.toByteArray(),"230.0.0.0",50000);
 
         mensaje.reset();
