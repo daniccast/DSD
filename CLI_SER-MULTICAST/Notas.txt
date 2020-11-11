@@ -1,0 +1,9 @@
+En multicast, el servidor es el programa que envía mensajes. Los clientes tienen que invocar el receive antes de que 
+el servidor ejecute el send.
+
+Implementada con sockets desconectados.
+
+Para recibir un mensaje los clientes se unen a un grupo para que el servidor mande mensajes sin saber la Implementada
+IP clase D 
+
+Se crea el gruop con un cliente y deja de existir cuando el ultimo cliente abandona el grupo.

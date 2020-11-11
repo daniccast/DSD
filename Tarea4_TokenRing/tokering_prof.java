@@ -6,7 +6,7 @@ import java.lang.Thread;
 import java.nio.ByteBuffer;
 
 
-class tokering{
+class tokenring_prof{
     static DataInputStream entrada;
     static DataOutputStream salida;
     static boolean primera_vez= true;
@@ -21,6 +21,7 @@ class tokering{
                 ServerSocket servidor = new ServerSocket(50000);
                 Socket conexion = servidor.accept();
                 entrada = new DataInputStream(conexion.getInputStream());
+                //System.out.println("Server creado");
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -35,7 +36,7 @@ class tokering{
 
         nodo= Integer.valueOf(args[0]);
         ip= args[1];
-
+        //System.out.println("Here" + ip);
         //Algoritmo 2
         Worker w = new Worker();
         w.start();
@@ -57,26 +58,18 @@ class tokering{
             if(nodo == 0){
                 if(primera_vez){
                     primera_vez= false;
-                    salida.writeLong(token);
+                    //System.out.println("Here");
                 } else{
                     token= entrada.readLong();
-                    System.out.println("Salida: "+ token);
-                    if(token==4){
-                        System.exit(1);
-                    } 
-                    token+=1;
-                    salida.writeLong(token);
                 }
-
             }  else{
                 token= entrada.readLong();
-                System.out.println("Salida: "+ token);
                 token+=1;
+                System.out.println("Salida: "+ token);
                 salida.writeLong(token);
             }
         }
 
     }
-
     
 }
