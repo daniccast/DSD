@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 class Chat{
+    public static String nombre;
 
     static void envia_mensaje(byte[] buffer,String ip,int puerto) throws IOException{
     /*  Función para mandar mensajes a un grupo MULTICAST
@@ -43,8 +44,13 @@ class Chat{
         MulticastSocket socket = new MulticastSocket(50000);
         socket.joinGroup(grupo); //Unir el socket al grupo
         while(true){
-            byte[] a = recibe_mensaje(socket,4);
-            System.out.println(new String(a,"UTF-8"));
+            byte[] a = recibe_mensaje(socket,100);
+            String name= new String(a,"UTF-8");
+            name= name.split(":")[0];
+
+            //if(!name.equals(nombre))
+              System.out.println("\n"+new String(a,"UTF-8"));
+
          }
     } catch (Exception e) {
        System.out.println(e);
@@ -57,20 +63,24 @@ class Chat{
     Worker w = new Worker();
     w.start();
 
-    String nombre = args[0] + ":"; //NOmbre de quien usa el programa.
-    byte [] name= nombre.getBytes();
-    BufferedReader b;
-    ByteArrayOutputStream mensaje = new ByteArrayOutputStream();
+    nombre = args[0]; //Nombre de quien usa el programa.
+    BufferedReader b=null;
+    String mensaje= null;
+    String texto=null;
     // En un ciclo infinito se leerá los mensajes del teclado y se enviarán
     // al grupo 230.0.0.0 a través del puerto 50000.
     while(true){
-
+        System.out.print("Escribe un mensaje:");
         b = new BufferedReader(new InputStreamReader(System.in));
-        mensaje.write(name);
-        mensaje.write(b.toString().getBytes());
-        envia_mensaje(mensaje.toByteArray(),"230.0.0.0",50000);
+        texto=b.readLine();
+        //System.out.println(texto);
 
-        mensaje.reset();
+        if(texto != null){
+          mensaje = nombre + ":" + texto;
+          //System.out.println(mensaje);
+          envia_mensaje(mensaje.getBytes(),"230.0.0.0",50000);
+        }
+        mensaje=null;
     }
 
 
