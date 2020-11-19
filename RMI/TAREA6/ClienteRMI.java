@@ -69,6 +69,7 @@ public class ClienteRMI{
     String url2 = "rmi://10.0.2.4/prueba";
     String url3 = "rmi:// 10.0.3.4/prueba";
 
+    System.out.println("Multiplicacion de matrices");
 
 
     llenar_Matriz();
