@@ -65,9 +65,9 @@ public class ClienteRMI{
   public static void main(String args[]) throws Exception{
     //Urls de los nodos
     String url0 = "rmi://localhost/prueba";
-    String url1 = "rmi://13.66.219.78/prueba";
-    String url2 = "rmi://52.151.12.1/prueba";
-    String url3 = "rmi://52.235.88.20/prueba";
+    String url1 = "rmi://10.0.1.4/prueba";
+    String url2 = "rmi://10.0.2.4/prueba";
+    String url3 = "rmi:// 10.0.3.4/prueba";
 
 
 
