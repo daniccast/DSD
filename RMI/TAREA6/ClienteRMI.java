@@ -67,7 +67,7 @@ public class ClienteRMI{
     String url0 = "rmi://localhost/prueba";
     String url1 = "rmi://10.0.1.4/prueba";
     String url2 = "rmi://10.0.2.4/prueba";
-    String url3 = "rmi:// 10.0.3.4/prueba";
+    String url3 = "rmi://10.0.3.4/prueba";
 
     System.out.println("Multiplicacion de matrices");
 
