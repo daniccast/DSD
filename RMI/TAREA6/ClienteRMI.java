@@ -1,7 +1,7 @@
 import java.rmi.Naming;
 
 public class ClienteRMI{
-  static int N= 4;
+  static int N= 500;
   static int[][] A = new int[N][N];
   static int[][] B = new int[N][N];
   static int[][] C = new int[N][N];
@@ -65,28 +65,30 @@ public class ClienteRMI{
   public static void main(String args[]) throws Exception{
     //Urls de los nodos
     String url0 = "rmi://localhost/prueba";
-    String url1 = "rmi://10.0.1.4/prueba";
-    String url2 = "rmi://10.0.2.4/prueba";
-    String url3 = "rmi://10.0.3.4/prueba";
+    String url1 = "rmi://10.0.0.5/prueba";
+    String url2 = "rmi://10.0.0.6/prueba";
+    String url3 = "rmi://10.0.0.7/prueba";
 
     System.out.println("Multiplicacion de matrices");
 
-
     llenar_Matriz();
     transponer_b();
-
+    //System.out.println("refernecias a objetos remotos:");
     // obtiene una referencia que "apunta" al objeto remoto asociado a la URL
     InterfaceRMI r0 = (InterfaceRMI)Naming.lookup(url0);
+    //System.out.println("0");
     InterfaceRMI r1 = (InterfaceRMI)Naming.lookup(url1);
+    //System.out.println("1");
     InterfaceRMI r2 = (InterfaceRMI)Naming.lookup(url2);
     InterfaceRMI r3 = (InterfaceRMI)Naming.lookup(url3);
    
-    
+    //System.out.println("Partir marices");
     int[][] A1 = parte_matriz(A,0);
     int[][] A2 = parte_matriz(A,N/2);
     int[][] B1 = parte_matriz(B,0);
     int[][] B2 = parte_matriz(B,N/2);
 
+    //System.out.println("Multiplicar marices");
     int[][] C1 = r0.multiplica_matrices(A1,B1);
     int[][] C2 = r1.multiplica_matrices(A1,B2);
     int[][] C3 = r2.multiplica_matrices(A2,B1);

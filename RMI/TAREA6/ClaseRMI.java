@@ -4,7 +4,7 @@ import java.rmi.server.UnicastRemoteObject;
 
 
 public class ClaseRMI extends UnicastRemoteObject implements InterfaceRMI{
-  static int N=4;
+  static int N=500;
   // es necesario que el contructor ClaseRMI() invoque el constructor de la superclase
   public ClaseRMI() throws RemoteException{
     super( );
