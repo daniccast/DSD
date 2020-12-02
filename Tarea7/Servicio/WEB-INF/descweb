@@ -1,0 +1,3 @@
+<load-on-startup>1</load-on-startup> indica que el servidor se debe cargar cuando inicie el servidor tomcat.
+url-pattern indica la ruta del servicio web
+resource ref tiene el nombre del data resource y res-tyoe indica el tipo de recurso

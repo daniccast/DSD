@@ -29,8 +29,8 @@
 				oculta(elemento);
 				muestra(get("menu"));
 			}
-                	function readSingleFile(files,imagen)
-                	{
+            function readSingleFile(files,imagen)
+            {
                         	var file = files[0];
                         	if (!file) return;
                         	var reader = new FileReader();
@@ -41,7 +41,7 @@
 					foto = reader.result.split(',')[1];
                         	};
 				reader.readAsDataURL(file);
-                	}
+            }
 			function limpia_alta()
 			{
 				get("alta_email").value = "";
@@ -150,25 +150,36 @@
 						alert(JSON.stringify(result));
 				});
 			}
-                        function limpia_borra()
-                        {
+            function limpia_borra()
+            	{
                                 get("borra_email").value = "";
-                        }
-                        function borra()
-                        {
-                                var client = new WSClient("/Servicio/rest/ws");
-                                client.post("borra",
-                                        {
-                                                email: get("borra_email").value
-                                        },
-                                        function(code,result)
-                                        {
-                                                if (code == 200)
-                                                        alert("OK");
-                                                else
-                                                        alert(JSON.stringify(result));
-                                        });
-                        }
+                }
+            function borra()
+            {
+                 var client = new WSClient("/Servicio/rest/ws");
+                 client.post("borra",
+                 {
+                     email: get("borra_email").value
+                 },
+                 function(code,result)
+                 {
+                   if (code == 200)
+                     alert("OK");
+                   else
+                      alert(JSON.stringify(result));
+                 });
+		   }
+		   function borrar_usuarios(){
+				var client = new WSClient("/Servicio/rest/ws");
+				client.post("borrar_usuarios", null ,
+                 function(code,result)
+                 {
+                   if (code == 200)
+                     alert("Usuarios borrados");
+                   else
+                      alert(JSON.stringify(result));
+                 });
+		   }
 		</script>
 	</head>
 	<body>
@@ -247,6 +258,7 @@
 			<button type="button" onclick="limpia_alta();muestra_pantalla(get('alta_usuario'))" style="width:200px">Alta usuario</button></br>
 			<button type="button" onclick="limpia_consulta();muestra_pantalla(get('consulta_usuario'))" style="width:200px">Consulta usuario</button></br>
 			<button type="button" onclick="limpia_borra();muestra_pantalla(get('borra_usuario'))" style="width:200px">Borra usuario</button></br>
+			<button type="button" onclick="borrar_usuarios()" style="width:200px">Borrar usuarios</button></br>
 		</div>
 	</body>
 </html>

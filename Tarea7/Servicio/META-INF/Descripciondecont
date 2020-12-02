@@ -1,0 +1,3 @@
+EL atributo name define el nombre del datasource, este permite cofigurar las conexiones que realiza el servicio web,sin tener que escribir los parametros de configuración en el cóigo.
+Url define el nombre de la base de datps, username el usuario y password la contraseña.
+
