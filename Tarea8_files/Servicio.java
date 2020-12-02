@@ -344,8 +344,9 @@ public class Servicio
       try{
         
         ResultSet rs = stmt_1.executeQuery();
+        rs.next();
         try{
-          if (rs.next().getInt("cu") == 0)
+          if (rs.getInt(1) == 0)
 		        return Response.status(400).entity(j.toJson(new Error("No hay usuarios que borrar"))).build();
         }
         finally{
